@@ -22,6 +22,8 @@
 </template>
 
 <script>
+//引入接口方法
+import {login} from '@/api/login_index.js'
 export default {
     data(){
         return{
@@ -43,7 +45,25 @@ export default {
         login(){
             this.$refs.loginForm.validate((valid)=>{
                 if(valid){
-                    console.log('可以发送请求了！！')
+                    login(this.loginForm)
+                       .then((res)=>{
+                        //   console.log(res)
+                        if(res.data.meta.status === 200){
+                            // console.log(res)
+                            this.$router.push('/home')
+                        }else{
+                            this.$message({
+                                message:res.data.meta.msg,
+                                type:'warning'
+                            })
+                        }
+                       })
+                       .catch(()=>{
+                           this.$message({
+                               message:'服务器异常，请稍后重试',
+                               type:'error'
+                           })
+                       })
                 }else{
                     // console.log('用户数据输入有错')
                     // this.$message({
