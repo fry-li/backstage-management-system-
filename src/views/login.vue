@@ -46,10 +46,11 @@ export default {
                     console.log('可以发送请求了！！')
                 }else{
                     // console.log('用户数据输入有错')
-                    this.$message({
-                        message:"请输入所有必填的数据",
-                        type:'warning'
-                    })
+                    // this.$message({
+                    //     message:"请输入所有必填的数据",
+                    //     type:'warning'
+                    // })
+                    this.$message.warning('请输入所有必填的数据')
                     return false
                 }
             })
