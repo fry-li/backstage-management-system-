@@ -51,6 +51,9 @@ export default {
                         if(res.data.meta.status === 200){
                             // console.log(res)
                             this.$router.push('/home')
+                            //获取token保存到本地
+                            localStorage.setItem('login_token',res.data.data.token)
+                            // console.log(12)
                         }else{
                             this.$message({
                                 message:res.data.meta.msg,
